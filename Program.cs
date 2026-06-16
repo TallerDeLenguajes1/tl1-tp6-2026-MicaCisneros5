@@ -46,3 +46,90 @@ if (int.TryParse(texto, out numero))
     Console.WriteLine("Error, el dato ingresado no es valido. Usted debe ingresar un numero entero.");
 }
 
+
+//Ejercicio 2. Ingrese al branch CalculadoraV1 y construya un programa que sea una calculadora que permita al usuario realizar las 4 operaciones básicas (Sumar, Restar, Multiplicar y Dividir) a partir de un menú para seleccionar la opción a elegir y que luego pida dos números y que devuelva el resultado de la operación seleccionada. Además una vez que termine de realizar la operación le pregunte si desea realizar otro cálculo.
+
+//creamos una variable de control inicializada en "TRUE" para que el programa entre al bucle while
+bool continuar = true;
+
+while (continuar)
+{
+    //mostramos menu de opciones
+    Console.WriteLine("===== CALCULADORA =====");
+    Console.WriteLine("1 - Sumar");
+    Console.WriteLine("2 - Restar");
+    Console.WriteLine("3 - Multiplicar");
+    Console.WriteLine("4 - Dividir");
+    Console.Write("Seleccione una opción: ");
+
+    //leemos y validamos el dato ingresado
+    string textoOpcion = Console.ReadLine();
+    int opcion;
+
+    if (int.TryParse(textoOpcion, out opcion))
+    {
+        //validamos la opcion seleccionada primero
+        if (opcion >= 1 && opcion <= 4)
+        {
+            //pedimos los dos numeros al usuario
+            Console.Write("Ingrese el primer número: ");
+            string texto1 = Console.ReadLine();
+            Console.Write("Ingrese el segundo número: ");
+            string texto2 = Console.ReadLine();
+
+            int num1, num2; 
+            //verificamos que ambos sean numeros para continuar la operacion
+            if (int.TryParse(texto1, out num1) && int.TryParse(texto2, out num2))
+            {
+                switch (opcion)
+                {
+                    case 1:
+                    Console.WriteLine("Resultado: " + (num1 + num2));
+                    break;
+
+                    case 2:
+                    Console.WriteLine("Resultado: " + (num1 - num2));
+                    break;
+
+                    case 3:
+                    Console.WriteLine("Resultado: " + (num1 * num2));
+                    break;
+
+                    case 4:
+                    if (num2 != 0)
+                    {
+                        Console.WriteLine("Resultado: " + (num1 / num2));
+                    } else
+                    {
+                        Console.WriteLine("Error. No se puede dividir por cero");
+                    }
+                    break;
+
+                    //default:
+                    //Console.WriteLine("Opcion invalida");
+                    //break;
+                }
+            }else
+            {
+                Console.WriteLine("Error, datos ingresados invalidos. Debe ingresar numeros validos");
+            }
+        } else
+        {
+            Console.WriteLine("Opcion invalida, debe seleccionar una opcion valida");
+        }
+    } else
+    {
+        Console.WriteLine("Error, dato ingresado invalido. Debe ingresar un numero.");
+    }
+
+    //preguntamos si se desea seguir realizando operaciones
+    Console.WriteLine("¿Desea realizar otro calculo? (s/n): ");
+    string respuesta = Console.ReadLine();
+
+    if (respuesta != "s")
+    {
+        continuar = false;
+        Console.WriteLine("Fin de la iteracion");
+    }
+
+}
