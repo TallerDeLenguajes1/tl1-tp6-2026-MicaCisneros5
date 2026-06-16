@@ -235,3 +235,5 @@ else
 {
     Console.WriteLine("La operacion es invalida.");
 }
+
+//Ejercicio 5: Construir un programa que permita identificar de forma sencilla si la cadena ingresada es una dirección web y otro que una cadena ingresada sea un mail válido.
